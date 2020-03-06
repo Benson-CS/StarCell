@@ -121,6 +121,9 @@ public class helperPooler : MonoBehaviour
         //Dequeue's object
         var obj = objectUnpool.Dequeue();
         //Sets it back to false
-        obj.SetActive(false);
+        if (obj.activeSelf == true)
+        {
+            obj.SetActive(false);
+        }
     }
 }

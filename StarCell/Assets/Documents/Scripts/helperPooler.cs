@@ -101,12 +101,12 @@ public class helperPooler : MonoBehaviour
         }
         //Grabs the gameObject that is being summon and de-queues it from poolDirectory list
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        //Activates gameObject
-        objectToSpawn.SetActive(true);
         //Sets the position
         objectToSpawn.transform.position = position;
         //Sets the rotation
         objectToSpawn.transform.rotation = rotation;
+        //Activates gameObject
+        objectToSpawn.SetActive(true);
         //Prepares the removal of gameObject
         objectUnpool.Enqueue(objectToSpawn);
         Invoke("toReturn", destroyDelay);

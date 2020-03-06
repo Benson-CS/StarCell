@@ -1,9 +1,10 @@
-﻿using System.Linq;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //Polished a lot by PhantomData87
+// color changing done by jetpackdan
 /*
       _                                                            _______
      | |                                        |                 /  \   /
@@ -83,6 +84,12 @@ public class GenScript : MonoBehaviour
     private Transform chosenAsteroid;
     //Pooler
     helperPooler helperPooler;
+    //asteroid color
+    private int AsteroidRed;
+    private int AsteroidGreen;
+    private int AsteroidBlue;
+    private int asteroidColorSelector;
+
 
     void Awake()
     {
@@ -208,11 +215,38 @@ public class GenScript : MonoBehaviour
                 //Making asteroids spawn
                 for (int loop = 0; loop < asteroidCount; loop++)
                 {
+                    asteroidColorSelector = Random.Range(1, 8);
+
+                    if (asteroidColorSelector == 1)//redish iron asteroid
+                    {
+                        AsteroidRed =(Random.Range(100, 250))/100;
+                        int randomNUmberHolderForColor = 1; //making the astroid diffrent shades of red 
+                        AsteroidGreen = randomNUmberHolderForColor;//set to a fixed value 
+                        AsteroidBlue = randomNUmberHolderForColor;//set to a fixed value 
+                       // Debug.Log("red");
+                    }
+                    else if (asteroidColorSelector == 2 | asteroidColorSelector == 3 | asteroidColorSelector == 4 | asteroidColorSelector == 5) //grey colod asteroid
+                    {
+                        int randomNUmberHolderForColor = (Random.Range(100,500 ))/100; //picking random values for the colors of gray 
+                        AsteroidRed = randomNUmberHolderForColor;   
+                        AsteroidGreen = randomNUmberHolderForColor;
+                        AsteroidBlue = randomNUmberHolderForColor;
+                       // Debug.Log("gray");
+                    }
+                    else if (asteroidColorSelector == 6 | asteroidColorSelector == 7 | asteroidColorSelector == 8) //blueish asteroid color
+                    {
+                        int randomNUmberHolderForColor = 1;
+                        AsteroidRed = randomNUmberHolderForColor;//set to a fixed value 
+                        AsteroidGreen = randomNUmberHolderForColor;//set to a fixed value 
+                        AsteroidBlue = (Random.Range(100,250))/100;//making geh asteroiud a more blue color 
+                       // Debug.Log("Blue");
+                    }
                     //Setting position of asteroids
                     Vector3 position = new Vector3(Random.Range(-asteroidDepth + centerPointX, asteroidDepth + centerPointX), Random.Range(-rangeAsteroid + centerPointY, rangeAsteroid + centerPointY), Random.Range(-rangeAsteroid + centerPointZ, rangeAsteroid + centerPointZ));
                     //Spawning asteroid from a list, and modifying it directly
                     var temp = helperPooler.Instance.SpawnFromPool($"Asteroid {Random.Range(1, 20)}", position, rotationOfPowerups, destroyDelay, 1000);
                     temp.transform.localScale = new Vector3(1, 1, 1);
+                    temp.GetComponent<Renderer>().material.color = new Color(AsteroidRed, AsteroidGreen, AsteroidBlue); //sets the colors for the asteroid 
                     temp.transform.localScale = temp.transform.localScale * Random.Range(smallBoi, bigBoi);
                     if (currentAsteroid > 10000000000)
                     {
@@ -237,11 +271,38 @@ public class GenScript : MonoBehaviour
                 //Making asteroids spawn
                 for (int loop = 0; loop < asteroidCount; loop++)
                 {
+                    asteroidColorSelector = Random.Range(1, 8);
+
+                    if (asteroidColorSelector == 1)//redish iron asteroid
+                    {
+                        AsteroidRed = Random.Range(5, 10);
+                        int randomNUmberHolderForColor = 5; //making the astroid diffrent shades of red 
+                        AsteroidGreen = randomNUmberHolderForColor;//set to a fixed value 
+                        AsteroidBlue = randomNUmberHolderForColor;//set to a fixed value 
+                        //Debug.Log("red");
+                    }
+                    else if (asteroidColorSelector == 2 | asteroidColorSelector == 3 | asteroidColorSelector == 4 | asteroidColorSelector == 5) //grey colod asteroid
+                    {
+                        int randomNUmberHolderForColor = Random.Range(1, 10); //picking random values for the colors of gray 
+                        AsteroidRed = randomNUmberHolderForColor;   
+                        AsteroidGreen = randomNUmberHolderForColor;
+                        AsteroidBlue = randomNUmberHolderForColor;
+                       // Debug.Log("gray");
+                    }
+                    else if (asteroidColorSelector == 6 | asteroidColorSelector == 7 | asteroidColorSelector == 8) //blueish asteroid color
+                    {
+                        int randomNUmberHolderForColor = 5;
+                        AsteroidRed = randomNUmberHolderForColor;//set to a fixed value 
+                        AsteroidGreen = randomNUmberHolderForColor;//set to a fixed value 
+                        AsteroidBlue = Random.Range(5, 10);//making geh asteroiud a more blue color 
+                       // Debug.Log("Blue");
+                    }
                     //Setting position of asteroids
                     Vector3 position = new Vector3(Random.Range(-asteroidDepth + centerPointX, asteroidDepth + centerPointX), Random.Range(-rangeAsteroid + centerPointY, rangeAsteroid + centerPointY), Random.Range(-rangeAsteroid + centerPointZ, rangeAsteroid + centerPointZ));
                     //Spawning asteroid from a list, and modifying it directly
                     var temp = helperPooler.Instance.SpawnFromPool($"Asteroid {Random.Range(1, 20)}", position, rotationOfPowerups, destroyDelay, 1000);
                     temp.transform.localScale = new Vector3(1, 1, 1);
+                    temp.GetComponent<Renderer>().material.color = new Color(AsteroidRed, AsteroidGreen, AsteroidBlue); //sets the colors for the asteroid
                     temp.transform.localScale = temp.transform.localScale * Random.Range(smallBoi, bigBoi);
                     if (currentAsteroid > 10000000000)
                     {

@@ -299,22 +299,24 @@ public class PewPewing : MonoBehaviour
             //Defines possible second position of 2nd projectile
             Vector3 position2 = new Vector3(shipPositionx + shipPosition2dx, shipPositiony + shipPosition2dy, shipPositionz + shipPosition2dz);
             //Spawns second projectile
-            var c = helperPooler.Instance.SpawnFromPool("Pew", position2, ProjectileAxiss, projectileDecay, 10);
+            var c = Instantiate(pellet, position2, ProjectileAxiss);
             c.tag = "Pew";
             c.name = $"Pellet{sending.cloneAddingPew}";
             sending.cloneAddingPew = cloneAddingPew + 1;
             //Updates globally what is the current projectile #
             cloneAddingPew = sending.cloneAddingPew;
+            Destroy(c.gameObject, projectileDecay);
         }
         //For projectile name
         sending.cloneAddingPew = cloneAddingPew + 1;
         ++cloneAddingPew;
         //Spawns first projectile
-        var b = helperPooler.Instance.SpawnFromPool("Pew", position1, ProjectileAxiss, projectileDecay, 10);
+        var b = Instantiate(pellet, position1, ProjectileAxiss);
         b.tag = "Pew";
         b.name = $"Pellet{sending.cloneAddingPew}"; //
         //Updates globally what is the current projectile #
         cloneAddingPew = sending.cloneAddingPew;
+        Destroy(b.gameObject, projectileDecay);
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void shotgun()

@@ -276,7 +276,7 @@ MonoBehaviour:
   spinSpeed: 1
   rangeAsteroid: 300
   asteroidDepth: 6
-  destroyDelay: 8
+  destroyDelay: 6
   asteroidCount: 30
   spanwTime: 0.1
   smallBoi: 6.96
