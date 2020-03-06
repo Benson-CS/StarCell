@@ -6,6 +6,7 @@ public class addRandomMovement : MonoBehaviour
 {
     Renderer m_Renderer;
     private Control_Dominate sending;
+    private string currentName;
     private float minSpinSpeed;
     private float maxSpinSpeed;
     private float spinSpeed;
@@ -17,12 +18,12 @@ public class addRandomMovement : MonoBehaviour
         sending = GameObject.Find("Control panel").GetComponent<Control_Dominate>();
         minSpinSpeed = sending.minSpinSpeed;
         maxSpinSpeed = sending.maxSpinSpeed;
-        spinSpeed = sending.spinSpeed;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        currentName = gameObject.name;
         m_Renderer = GetComponent<Renderer>();
         spinSpeed = Random.Range(minSpinSpeed, maxSpinSpeed);
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -32,10 +33,17 @@ public class addRandomMovement : MonoBehaviour
 
     void AsteroidUpdate()
     {
+        m_Renderer = GetComponent<Renderer>();
+        Rigidbody rb = GetComponent<Rigidbody>();
         if (m_Renderer.isVisible)
         {
+            Debug.Log(spinSpeed);
             transform.Rotate(Vector3.up, spinSpeed);
+            if (gameObject.name != currentName)
+            {
+                spinSpeed = Random.Range(minSpinSpeed, maxSpinSpeed);
+                currentName = gameObject.name;
+            }
         }
-
     }
 }

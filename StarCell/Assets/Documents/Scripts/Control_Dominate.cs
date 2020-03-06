@@ -80,10 +80,10 @@ public class Control_Dominate : MonoBehaviour
     [Range(0.01f, 1f)] public float updateSpeed;
 
     [Tooltip("Lowest possible rotation speed")]
-    public float minSpinSpeed;
+    [Range(0f, 100f)] public float minSpinSpeed;
 
     [Tooltip("Highest possible rotation speed")]
-    public float maxSpinSpeed;
+    [Range(0f, 100f)] public float maxSpinSpeed;
 
     [Tooltip("Constant turning speed")]
     public float spinSpeed;

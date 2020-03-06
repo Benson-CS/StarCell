@@ -340,13 +340,13 @@ MonoBehaviour:
   rotationOfPowerups: {x: 0, y: 0, z: 0, w: 1}
   skipTutorial: 1
   delayTutorial: 0
-  difficulty: 2.3
+  difficulty: 1.8
   difficultyRate: 0
   delayForDifficultyRate: 0
   asteroidHealth: 0
   asteroidHealthRate: 0
   levelTotal: 10
-  levelCompletionTime: 100
+  levelCompletionTime: 60
   levelWaitTime: 5
   betterPowerupStartLevel: 2
   enemyStartLevel: 0
